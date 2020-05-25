@@ -1,0 +1,46 @@
+{% extends "main.html.twig" %}
+
+{% block title %}Mensaje {{ subject }}{% endblock %}
+{% block content %}
+
+
+    <div class="form-group">
+        <label for="from">De</label>
+        <p type="text" class="form-control" id="from" name="from" placeholder="Para">{{ sender.username }}</p>
+    </div>
+    <div class="form-group">
+        <label for="to">Para</label>
+        <p type="text" class="form-control" id="to" name="to" placeholder="Para">
+            {% for users in to %}
+                {{ users }},
+            {% endfor %}
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="subject">Asunto</label>
+        <p type="text" class="form-control" id="subject" name="subject" placeholder="Asunto">{{ subject }} </p>
+    </div>
+    <div class="form-group">
+        <label for="date">Fecha</label>
+        <p type="text" class="form-control" id="date" name="date" placeholder="Fecha"> {{ date }} </p>
+    </div>
+    <div id="atached_docs"></div>
+    <div class="form-group">
+        <label class="form-label" for="msgbody">Mensaje</label>
+        <p form="msg" id="msgbody" name="msgbody" class="md-textarea form-control">{{ body }}</p>
+    </div>
+
+    {% if attach is defined and attach|length > 0 %}
+        <div id="atached_docs">
+            Pincha para descargar los archivos
+            <br>
+            {% for doc in attach %}
+                {% set path = '/attach/' ~ doc.filename|e %}
+                <a href={{ path }} download class="btn btn-primary m-2">{{ doc.originalname|e }}</a>
+            {% endfor %}
+        </div>
+        <br>
+    {% endif %}
+
+    <a href="{{ path ("sendMsgUser", {user : sender.userid}) }}" class="btn btn-primary" onclick="loadNewMessage()">Responder / Reenviar</a>
+{% endblock %}

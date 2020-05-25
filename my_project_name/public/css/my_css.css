@@ -1,0 +1,44 @@
+.all{
+    background-color: #fafafb;
+}
+
+nav-item, nav-link, nav-tabs, nav{
+    background-color: #fafafb;
+    border: 0;
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none !important;
+}
+
+
+.bg-dark{
+    background: #a6a6a7;
+}
+.nav {
+    min-width: 0;
+}
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start ;
+}
+.hover:hover {
+    background: #d7d9dd;
+}
+
+
+.full-height {
+    height: 100vh;
+}
+.container {
+    padding-top: 1em;
+}
+html, body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}

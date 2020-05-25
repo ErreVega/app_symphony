@@ -1,0 +1,25 @@
+{% extends "baseAPP.html.twig" %}
+
+
+{% block title %}Principal{% endblock %}
+{% block body %}
+
+        <nav  id="menu" class="nav-pills col-md-2 p-3 d-inline-block border">
+            <a class="nav-link active" href="{{ path('profile', { num : app.user.userid } ) }}">Perfil</a>
+            <a class="nav-link" href="{{ path('sendMsg') }}">Nuevo</a>
+            <a class="nav-link" href="{{ path('sent') }}" >Enviados</a>
+            <a class="nav-link" href="{{ path('received') }}" >Recibidos</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Amigos</a>
+        <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{ path('friends') }}" >Mis Amigos</a>
+              <a class="dropdown-item" href="{{ path('friends_pending') }}">Solicitudes de Amistad</a>
+              <a class="dropdown-item" href="">Buscar Nuevos amigos!</a>
+            </div>
+            <br><br><br>
+            <a class="nav-link " href="{{ path('logout') }}">Cerrar Sesion</a>
+        </nav>
+        <div id ="content" class="container col-md-10 float-right border all">
+            {% block content %} {% endblock %}
+        </div>
+
+{% endblock %}

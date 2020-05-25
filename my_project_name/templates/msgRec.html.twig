@@ -1,0 +1,25 @@
+{% extends "main.html.twig" %}
+
+{% block title %}Mis Mensajes {% endblock %}
+{% block content %}
+    <div id="msg_table" class="tabs-content">
+        <div class=" row border-bottom p-1  ">
+            <div class="col-1">Fecha</div>
+            <div class="col-1">Hora</div>
+            <div class="col-2">Enviado Por</div>
+            <div class="col">Asunto</div>
+        </div>
+
+        {% for mail in mails %}
+
+        <a href="{{ path('msg', {num : mail[0].msgid}) }}">
+            <div class="hover row border-bottom p-1" id="msg_{{ mail[0].msgid }}">
+                    <div class="col-1"> {{ mail[0].date | date("d/m/Y") }}  </div>
+                    <div class="col-1"> {{ mail[0].date | date("h:i:s") }}  </div>
+                    <div class="col-2"> {{ mail[0].senderid.username  }}  </div>
+                    <div class="col"> {{ mail[0].subject }}  </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "main.html.twig" %}
+
+{% block title %}Mis Mensajes {% endblock %}
+{% block content %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.description, {'label': 'Descripcion',  'attr': {'value': placeholder[0]}}) }}
+    {{ form_row(form.address,  {'label': 'Direccion',  'attr': {'value': placeholder[1]}}) }}
+    {{ form_row(form.age, {'label': 'Edad',  'attr': {'value': placeholder[2]}}) }}
+    {{ form_row(form.avatar, {'label': 'Avatar'}) }}
+    {{ form_row(form.submit, {'label': 'Actualizar campos'}) }}
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

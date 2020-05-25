@@ -1,0 +1,31 @@
+{% extends "main.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+
+    {% if send is defined and send %}
+        <h4>Solicitud enviada</h4>
+    {% endif %}
+
+    <div class="flex-container">
+        {% for friend in friends %}
+            {% set path = 'avatars/' ~ friend.photopath %}
+            <div class="card text-white text-center bg-secondary mb-3 m-1" style="width: 10rem;">
+                <img class="card-img-top" src=" {{ asset(path) }} " alt="Foto">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ friend.username }}</h5>
+                    <a href="{{ path("profile", {num : friend.userid}) }}" class="btn btn-primary m-1" style="width: 100%;">Ir a perfil</a>
+
+                    {% if sugested is defined and sugested %}
+                        <a href="{{ path("sendFriendPetition", {friendUser:friend.userid}) }}" id="enviar" class="btn btn-primary m-1" style="width: 100%;">Enviar Solicitud de Amistad</a>
+                    {% else %}
+                        <a href="{{ path("sendMsgUser", {user:friend.userid}) }}" id="enviar" class="btn btn-primary m-1" style="width: 100%;">Enviar mensaje</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "main.html.twig" %}
+
+{% block title %}Mis Mensajes {% endblock %}
+{% block content %}
+
+    {% if err is defined %}
+        {% for error in err %}
+            <li style="color: #C82829">{{ error }}</li>
+        {% endfor %}
+    {% endif %}
+
+    {% if success is defined and success %}
+        <h3>Su Mensaje se ha enviado correctamente</h3>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {% if user is defined and user != null %}
+        {{ form_row(form.to, {'label': 'Para', 'value':user.username}) }}
+    {% else %}
+        {{ form_row(form.to, {'label': 'Para'}) }}
+    {% endif %}
+
+    {{ form_row(form.subject,  {'label': 'Asunto'}) }}
+    {{ form_row(form.msgbody, {'label': 'Mensaje'}) }}
+    {{ form_row(form.attach, {'label': 'Adjuntos'}) }}
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

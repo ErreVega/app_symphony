@@ -1,0 +1,39 @@
+{% extends "main.html.twig" %}
+
+{% block title %}Perfil de {{ user_name }}{% endblock %}
+{% block content %}
+
+    {% set path = 'avatars/' ~ photo_path %}
+    <div class="content m-3 row">
+    <div class="col-md-8">
+        <div class="flex-container left-align">
+            <div>Nombre {{ user_name }} </div>
+        </div>
+        <br>
+        <div class="flex-container left-align">
+            <div>Descripción {{ description }}  </div>
+        </div>
+        <br>
+        <div class="flex-container left-align">
+            <div>Edad {{ age }}  </div>
+        </div>
+        <br>
+        <div class="flex-container left-align">
+            <div>Dirección {{ address }}  </div>
+        </div>
+    </div>
+
+        <div class="col-md-4">
+            <img class="image  flex-container  table-bordered m-3" src="{{ asset(path) }}" alt="Foto"
+                 width="200px">
+        </div>
+    </div>
+    <br>
+
+    {% if app.user.userid == consulted_user_id %}
+        <br><br><br><br>
+        <a href="{{ path('editprofile') }}" id="btnPerfil" class="btn btn-primary right-align">Modificar perfil</a>
+    {% endif %}
+
+
+{% endblock %}
